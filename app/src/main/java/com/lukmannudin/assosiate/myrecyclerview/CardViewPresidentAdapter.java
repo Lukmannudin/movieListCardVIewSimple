@@ -1,8 +1,8 @@
 package com.lukmannudin.assosiate.myrecyclerview;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +36,7 @@ public class CardViewPresidentAdapter extends RecyclerView.Adapter<CardViewPresi
     public class CardViewViewHolder extends RecyclerView.ViewHolder {
         ImageView imgPhoto;
         TextView tvName,tvRemarks;
-        Button btnFavorite, btnShare;
+        Button btnFavorite, btnDetail;
 
         public CardViewViewHolder(View itemView) {
             super(itemView);
@@ -44,7 +44,7 @@ public class CardViewPresidentAdapter extends RecyclerView.Adapter<CardViewPresi
             tvName = itemView.findViewById(R.id.tv_item_name);
             tvRemarks = itemView.findViewById(R.id.tv_item_remarks);
             btnFavorite = itemView.findViewById(R.id.btn_set_favorite);
-            btnShare = itemView.findViewById(R.id.btn_set_share);
+            btnDetail = itemView.findViewById(R.id.btn_detail);
         }
     }
 
@@ -58,7 +58,7 @@ public class CardViewPresidentAdapter extends RecyclerView.Adapter<CardViewPresi
 
     @Override
     public void onBindViewHolder(CardViewViewHolder holder, int position) {
-        President p = getListPresident().get(position);
+        final President p = getListPresident().get(position);
 
         Glide.with(context)
                 .load(p.getPhoto())
@@ -74,10 +74,16 @@ public class CardViewPresidentAdapter extends RecyclerView.Adapter<CardViewPresi
             }
         }));
 
-        holder.btnShare.setOnClickListener(new CustomOnItemClickListener(position, new CustomOnItemClickListener.OnItemClickCallback() {
+        holder.btnDetail.setOnClickListener(new CustomOnItemClickListener(position, new CustomOnItemClickListener.OnItemClickCallback() {
             @Override
             public void onItemClicked(View view, int position) {
-                Toast.makeText(context, "Share "+getListPresident().get(position).getName(),Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context, "Share "+getListPresident().get(position).getName(),Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context,detailFilm.class);
+                intent.putExtra(Utils.FILM_NAME,p.getName());
+                intent.putExtra(Utils.FILM_DESCRIPTION,p.getDescription());
+                intent.putExtra(Utils.PHOTO,p.getPhoto());
+                intent.putExtra(Utils.YEAR,p.getYear());
+                context.getApplicationContext().startActivity(intent);
             }
         }));
     }

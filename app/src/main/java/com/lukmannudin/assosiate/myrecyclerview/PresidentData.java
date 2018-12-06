@@ -37,6 +37,7 @@ public class PresidentData {
             {
                 "Pengabdi setan",
                     "2017",
+                    "http://t2.gstatic.com/images?q=tbn:ANd9GcSxMprcN3-6yiVjsQskhvIE8xIB8Ms2Ci4H-F7myzINEMucWx7Z",
                     "Setelah sakit aneh selama 3 tahun, Ibu akhirnya meninggal dunia. Bapak lalu memutuskan untuk kerja di luar kota meninggalkan anak-anak. Tak lama kemudian, anak-anak merasa bahwa Ibu kembali berada di rumah. Situasi semakin menyeramkan ketika mereka mengetahui bahwa Ibu datang lagi tidak sekedar untuk menjenguk, tapi untuk menjemput mereka.",
                 ""
             },
